@@ -10,16 +10,30 @@ class CertificateRenderer {
     imgUrl,
     fonts,
   }) {
-    this.canvasId = canvasId;
-    this.heading = heading;
-    this.mainFirst = mainFirst;
-    this.mainLast = mainLast;
-    this.recipientName = recipientName;
-    this.signature = signature;
-    this.post = post;
-    this.imgUrl = imgUrl;
+    this.canvasId = canvasId || "";
+    this.heading = heading || "";
+    this.mainFirst = mainFirst || "";
+    this.mainLast = mainLast || "";
+    this.recipientName = recipientName || "";
+    this.signature = signature || "";
+    this.post = post || "";
+    this.imgUrl =
+      imgUrl ||
+      "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
     this.canvas = "Not yet rendered";
-    this.fonts = fonts;
+    this.fonts = fonts || {};
+    this.fonts.heading =
+      fonts?.heading ||
+      "https://fonts.gstatic.com/s/cormorantgaramond/v10/co3WmX5slCNuHLi8bLeY9MK7whWMhyjYrEO7uj-KzhM.woff2";
+    this.fonts.main =
+      fonts?.main ||
+      "https://fonts.gstatic.com/s/imperialscript/v1/5DCPAKrpzy_H98IV2ISnZBbGrVNfOuPk.woff2";
+    this.fonts.recipient =
+      fonts?.recipient ||
+      "https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2";
+    this.fonts.signature =
+      fonts?.signature ||
+      "https://fonts.gstatic.com/s/tangerine/v12/IurY6Y5j_oScZZow4VOxCZZM.woff2";
   }
 
   renderCertificate = async (forDownload) => {
@@ -80,7 +94,7 @@ class CertificateRenderer {
       this.canvas.height
     );
 
-    ctx.font = `italic ${this.canvas.width * (90 / 1920)}pt HeadingFont`;
+    ctx.font = `${this.canvas.width * (90 / 1920)}pt HeadingFont`;
     ctx.textAlign = "center";
     this.wrapText(
       ctx,
