@@ -2,8 +2,8 @@ class CertificateRenderer {
   constructor({
     canvasId,
     heading,
-    mainFirst,
-    mainLast,
+    beforeName,
+    afterName,
     recipientName,
     signature,
     post,
@@ -12,8 +12,8 @@ class CertificateRenderer {
   }) {
     this.canvasId = canvasId || "";
     this.heading = heading || "";
-    this.mainFirst = mainFirst || "";
-    this.mainLast = mainLast || "";
+    this.beforeName = beforeName || "";
+    this.afterName = afterName || "";
     this.recipientName = recipientName || "";
     this.signature = signature || "";
     this.post = post || "";
@@ -109,7 +109,7 @@ class CertificateRenderer {
 
     this.wrapText(
       ctx,
-      this.mainFirst.slice(0, 99),
+      this.beforeName.slice(0, 99),
       this.canvas.width / 2,
       this.canvas.width * (460 / 1920),
       this.canvas.width * 0.8,
@@ -131,7 +131,7 @@ class CertificateRenderer {
 
     this.wrapText(
       ctx,
-      this.mainLast.slice(0, 188),
+      this.afterName.slice(0, 188),
       this.canvas.width / 2,
       this.canvas.width * (675 / 1920),
       this.canvas.width * 0.8,
