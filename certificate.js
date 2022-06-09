@@ -44,10 +44,19 @@ class CertificateRenderer {
     document.fonts.add(font4);
 
     this.certificateBackground = new Image();
+    this.certificateBackground.crossOrigin = "anonymous";
     this.certificateBackground.src = this.imgUrl;
     this.certificateBackground.onload = () => {
       this.afterFontLoad(forDownload);
     };
+  };
+
+  download = function () {
+    let link = document.createElement("a");
+    link.download = `${this.heading ? this.heading : "certificate"}.png`;
+    link.href = document.getElementById(this.canvasId).toDataURL();
+    link.click();
+    link.remove();
   };
 
   afterFontLoad = (forDownload) => {
